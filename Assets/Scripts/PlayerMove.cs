@@ -8,8 +8,13 @@ public class PlayerMove : MonoBehaviour
 
     private float _verticalInput;
     private float _horizontalInput;
-    private float _speed = 10f;
+    private float _speed = 5f;
+    private Animator animator;
 
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -21,6 +26,7 @@ public class PlayerMove : MonoBehaviour
     {
         _player.velocity = new Vector2(_horizontalInput, _player.velocity.y);
         _player.velocity = new Vector2(_player.velocity.x, _verticalInput);
-        
+
+        animator.SetFloat("Speed", _player.velocity.magnitude);
     }
 }
