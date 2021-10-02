@@ -21,7 +21,7 @@ public class Reactor : MonoBehaviour
     {
         while (true)
         {
-            _delta = Random.Range(-2, 2);
+            _delta = Random.Range(-3, 3)*10;
             _absorption.value = _absorption.value + _delta;
             yield return new WaitForSeconds(1f);
         }

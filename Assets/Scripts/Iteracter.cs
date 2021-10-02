@@ -18,8 +18,8 @@ public class Iteracter : MonoBehaviour
         {
             enabled = false;
             panelOpener.Open();
+            Player.Instance.GetComponent<PlayerMove>().StopMove();
             Player.Instance.GetComponent<PlayerMove>().enabled = false;
-            Player.Instance.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         }
     }
     private void OnTriggerEnter2D(Collider2D collider)

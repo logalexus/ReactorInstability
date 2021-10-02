@@ -26,8 +26,17 @@ public class PlayerMove : MonoBehaviour
     {
         _player.velocity = new Vector2(_horizontalInput, _player.velocity.y);
         _player.velocity = new Vector2(_player.velocity.x, _verticalInput);
+        PlayAnimation();
+    }
 
+    public void StopMove()
+    {
+        _player.velocity = Vector3.zero;
+        PlayAnimation();
+    }
 
+    private void PlayAnimation()
+    {
         if (_player.velocity.x != 0)
             _animator.SetFloat("Speed", _player.velocity.x);
         else _animator.SetFloat("Speed", _player.velocity.y);
