@@ -19,11 +19,11 @@ AnimationClip:
   m_FloatCurves: []
   m_PPtrCurves:
   - curve:
-    - time: 0.05
+    - time: 0
       value: {fileID: -7221865514770959421, guid: 12239a525ee170e4e9293fedfb7ba7b3, type: 3}
-    - time: 0.2
+    - time: 0.15
       value: {fileID: 1520192549975761081, guid: 12239a525ee170e4e9293fedfb7ba7b3, type: 3}
-    - time: 0.35
+    - time: 0.3
       value: {fileID: 6710542926590696780, guid: 12239a525ee170e4e9293fedfb7ba7b3, type: 3}
     - time: 0.45
       value: {fileID: 8961752267417923234, guid: 12239a525ee170e4e9293fedfb7ba7b3, type: 3}
