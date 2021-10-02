@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Back
+    uniqueID: 130193585
+    locked: 0
+  - name: Floor
+    uniqueID: 665473539
+    locked: 0
+  - name: Reactor
+    uniqueID: 3511576147
+    locked: 0
+  - name: IteractObj
+    uniqueID: 3042633179
+    locked: 0
+  - name: Player
+    uniqueID: 2820404077
+    locked: 0
