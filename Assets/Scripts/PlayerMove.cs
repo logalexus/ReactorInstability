@@ -19,7 +19,12 @@ public class PlayerMove : MonoBehaviour
     private void Update()
     {
         _verticalInput = Input.GetAxis("Vertical") * _speed;
-        _horizontalInput = Input.GetAxis("Horizontal") * _speed;
+        _horizontalInput = Input.GetAxis("Horizontal") * _speed;  
+        
+        
+        if (Mathf.Abs(_player.velocity.x) > 0.01)
+            _animator.SetFloat("Speed", _player.velocity.x);
+        else _animator.SetFloat("Speed", _player.velocity.y);
     }
 
     private void FixedUpdate()
@@ -27,9 +32,6 @@ public class PlayerMove : MonoBehaviour
         _player.velocity = new Vector2(_horizontalInput, _player.velocity.y);
         _player.velocity = new Vector2(_player.velocity.x, _verticalInput);
 
-
-        if (_player.velocity.x != 0)
-            _animator.SetFloat("Speed", _player.velocity.x);
-        else _animator.SetFloat("Speed", _player.velocity.y);
+      
     }
 }
