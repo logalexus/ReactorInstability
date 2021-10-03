@@ -12,16 +12,20 @@ public class Breaking : MonoBehaviour
 
     private Sequence _warningSignSeq;
     private float _scaleDelta = 0.2f;
-    private bool isCall = false;
+    private bool _isCall = false;
+
+    public bool IsCall => _isCall;
+    public UnityAction callbackAfterFix;
 
     public void StartBreaking()
     {
-        if (!isCall)
+        if (!_isCall)
         {
             _warningSignSeq = DOTween.Sequence();
             _warningSignSeq.Join(_warningSign.DOFade(1, 0.4f));
             _warningSignSeq.Join(_warningSign.transform.DOScale(new Vector2(transform.localScale.x + _scaleDelta, transform.localScale.y + _scaleDelta), 0.4f)).SetLoops(-1, LoopType.Yoyo);
-            isCall = true;
+            _isCall = true;
+            Reactor.Instance.Delta += 10;
         }
     }
 
@@ -45,6 +49,10 @@ public class Breaking : MonoBehaviour
             _warningSignSeq.Restart();
         });
         _warningSignSeq.Kill();
-        isCall = false;
+        callbackAfterFix?.Invoke();
+        callbackAfterFix = null;
+        _isCall = false;
+        Reactor.Instance.Delta -= 10;
+
     }
 }
