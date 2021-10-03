@@ -4,7 +4,7 @@ using DG.Tweening;
 
 public class IteractPanelTransition : MonoBehaviour
 {
-    //[SerializeField] protected RectTransform _topGroup;
+    [SerializeField] protected RectTransform _topGroup;
     [SerializeField] protected RectTransform _bottomGroup;
 
     protected CanvasGroup _canvasGroup;

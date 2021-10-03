@@ -22,13 +22,24 @@ public class Iteracter : MonoBehaviour
             Player.Instance.GetComponent<PlayerMove>().enabled = false;
         }
     }
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerStay2D(Collider2D collider)
     {
-        if (collider.transform.TryGetComponent(out HighlightToIteract hl))
+        if (collider.transform.TryGetComponent(out ControlPanel hl))
         {
             panelOpener = collider.transform.GetComponent<PanelOpener>();
             isIteractable = true;
             _sprite.DOFade(1, 0.5f);
+        }
+        if (collider.transform.TryGetComponent(out breaking) && breaking.IsCall)
+        {
+            panelOpener = collider.transform.GetComponent<PanelOpener>();
+            isIteractable = true;
+            _sprite.DOFade(1, 0.5f);
+            breaking.callbackAfterFix += () => 
+            {
+                _sprite.DOFade(0, 0.5f);
+                isIteractable = false;
+            };
         }
     }
 
