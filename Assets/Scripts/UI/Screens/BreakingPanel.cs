@@ -4,9 +4,10 @@ using System.Collections;
 public class BreakingPanel : IteractPanel
 {
     [SerializeField] private Breaking _breaking;
-    public override void Open()
+    public override void Open(GameObject caller)
     {
-        base.Open();
+        base.Open(caller);
+        _breaking = caller.GetComponent<Breaking>();
         _breaking.FixBreaking(()=>
         {
             Close();

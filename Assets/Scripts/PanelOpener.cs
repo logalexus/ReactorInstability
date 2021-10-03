@@ -8,6 +8,6 @@ public class PanelOpener : MonoBehaviour
 
     public void Open()
     {
-        _iteractPanel.Open();
+        _iteractPanel.Open(gameObject);
     }
 }

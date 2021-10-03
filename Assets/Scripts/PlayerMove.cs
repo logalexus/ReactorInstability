@@ -20,18 +20,27 @@ public class PlayerMove : MonoBehaviour
     {
         _verticalInput = Input.GetAxis("Vertical") * _speed;
         _horizontalInput = Input.GetAxis("Horizontal") * _speed;  
-        
-        
-        if (Mathf.Abs(_player.velocity.x) > 0.01)
-            _animator.SetFloat("Speed", _player.velocity.x);
-        else _animator.SetFloat("Speed", _player.velocity.y);
     }
 
     private void FixedUpdate()
     {
         _player.velocity = new Vector2(_horizontalInput, _player.velocity.y);
         _player.velocity = new Vector2(_player.velocity.x, _verticalInput);
+        PlayAnimation();
+    }
 
-      
+    public void StopMove()
+    {
+        _player.velocity = Vector3.zero; 
+        PlayAnimation();
+        _animator.SetBool("Fix", true);
+    }
+
+    private void PlayAnimation()
+    {
+        _animator.SetBool("Fix", false);
+        if (_player.velocity.x != 0)
+            _animator.SetFloat("Speed", _player.velocity.x);
+        else _animator.SetFloat("Speed", _player.velocity.y);
     }
 }
