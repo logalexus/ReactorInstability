@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class StartSceneTransition : MonoBehaviour
 {
     [SerializeField] private Image _sprite;
+
     void Start()
     {
         _sprite.DOFade(0, 1);
