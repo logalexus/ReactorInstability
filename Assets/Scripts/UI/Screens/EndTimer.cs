@@ -7,14 +7,11 @@ public class EndTimer : IteractPanel
 {
     [SerializeField] private EndTimerTransition _endTimerTransition;
     [SerializeField] private TextMeshProUGUI _timerUI;
+    [SerializeField] private Explosion _explosion;
+
 
     private int _timer = 10;
-
-    private void Start()
-    {
-
-
-    }
+    
 
     public override void Open(GameObject caller)
     {
@@ -36,14 +33,17 @@ public class EndTimer : IteractPanel
 
     IEnumerator Timer()
     {
-        while (_timer > 0)
+        while (true)
         {
             yield return new WaitForSeconds(1f);
             _timerUI.text = $"{_timer}";
             if (_timer > 0)
                 _timer--;
-            else
-                _timer = 0;
+            else if (_timer == 0)
+            {
+                _explosion.StartAnim();
+                break;
+            }
         }
     }
 

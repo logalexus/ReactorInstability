@@ -13,6 +13,7 @@ public class Reactor : MonoBehaviour
 
 
 
+
     [SerializeField] private Slider _absorption;
 
     private float _delta = 10;
