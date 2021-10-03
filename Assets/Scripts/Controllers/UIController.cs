@@ -28,12 +28,12 @@ public class UIController : MonoBehaviour
     }
     
 
-    public void OpenScreen(IteractPanel screen)
-    {
-        _activeScreen.Close();
-        screen.Open();
-        _activeScreen = screen;
-    }
+    //public void OpenScreen(IteractPanel screen)
+    //{
+    //    _activeScreen.Close();
+    //    screen.Open();
+    //    _activeScreen = screen;
+    //}
 
     public T GetScreen<T>() where T : IteractPanel
     {

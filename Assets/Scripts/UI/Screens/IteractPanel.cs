@@ -6,15 +6,18 @@ public class IteractPanel : MonoBehaviour
 {
     [SerializeField] private Canvas _canvas;
     [SerializeField] private CanvasGroup _canvasGroup;
-    
+    [SerializeField] private GameObject _caller;
+
+
     public void Awake()
     {
         _canvas.enabled = false;
     }
 
-    public virtual void Open()
+    public virtual void Open(GameObject caller)
     {
         _canvas.enabled = true;
+        _caller = caller;
     }
 
     public virtual void Close()

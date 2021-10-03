@@ -18,9 +18,9 @@ public class ReactControlPanel : IteractPanel
         });
     }
 
-    public override void Open()
+    public override void Open(GameObject caller)
     {
-        base.Open();
+        base.Open(caller);
         mainMenuTransition.OpenAnim();
     }
 
