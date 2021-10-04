@@ -10,8 +10,8 @@ public class GameController : MonoBehaviour
 
     public event UnityAction GameOver;
     public event UnityAction GameStart;
-    public event UnityAction GameRestart;
-    public event UnityAction GameInitial;
+    public event UnityAction StartDialog;
+    public event UnityAction EndDialog;
 
     private AudioController _audioController;
     
@@ -44,15 +44,13 @@ public class GameController : MonoBehaviour
 
     }
 
-    public void OnGameRestart()
+    public void OnStartDialog()
     {
-        GameRestart?.Invoke();
-        OnGameStart();
+        StartDialog?.Invoke();
     }
 
-    public void OnGameToInitial()
+    public void OnEndDialog()
     {
-        GameRestart?.Invoke();
-        GameInitial?.Invoke();
+        EndDialog?.Invoke();
     }
 }

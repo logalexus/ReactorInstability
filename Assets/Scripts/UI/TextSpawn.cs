@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class TextSpawn : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _dialogueText;
     [SerializeField] private string[] _sentences;
+    [SerializeField] private Button _close;
 
     private float _distance = 280f;
     private float _duration = 1f;
@@ -18,6 +20,12 @@ public class TextSpawn : MonoBehaviour
 
     private void Start()
     {
+        _close.onClick.AddListener(() =>
+        {
+            Close();
+        });
+
+        GameController.Instance.OnStartDialog();
         transform.DOMove(new Vector3(transform.position.x, transform.position.y + _distance), _duration);
     }
 
@@ -42,8 +50,7 @@ public class TextSpawn : MonoBehaviour
         }
         else
         {
-            transform.DOMove(new Vector3(transform.position.x, transform.position.y - _distance), _duration);
-            Time.timeScale = 1f;
+            Close();
         }
     }
 
@@ -56,5 +63,11 @@ public class TextSpawn : MonoBehaviour
         }
         _index++;
         _isTyping = false;
+    }
+
+    void Close()
+    {
+        transform.DOMove(new Vector3(transform.position.x, transform.position.y - _distance), _duration);
+        GameController.Instance.OnEndDialog();
     }
 }

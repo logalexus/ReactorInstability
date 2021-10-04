@@ -82,7 +82,9 @@ public class Reactor : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(UpdateReactor());
+        GameController.Instance.StartDialog += () => StopAllCoroutines();
+        GameController.Instance.EndDialog += () => StartCoroutine(UpdateReactor());
+       // StartCoroutine(UpdateReactor());
     }
    
     IEnumerator UpdateReactor()
