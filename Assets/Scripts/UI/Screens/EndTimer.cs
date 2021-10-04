@@ -59,14 +59,20 @@ public class EndTimer : IteractPanel
             }
             else if (_timer == 0)
             {
-                _slider.interactable = false;
-                if (Reactor.Instance.TemperatureReactor > 1200)
+                if (Reactor.Instance.TemperatureReactor > 900)
+                {
                     _explosion.StartAnim();
-                else if (Reactor.Instance.PowerReactor < 1000)
+                    GameController.Instance.OnGameOver();
+                    break;
+                }
+                else if (Reactor.Instance.PowerReactor < 1100)
+                {
                     _finalScreenNonPower.Open(gameObject);
+                    GameController.Instance.OnGameOver();
+                    break;
+                }
+                Close();
 
-                GameController.Instance.OnGameOver();
-                break;
             }
         }
     }
