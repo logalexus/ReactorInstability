@@ -30,6 +30,11 @@ public class AudioController : MonoBehaviour
 
     private void Start()
     {
+        GameController.Instance.GameOver += () =>
+        {
+            StopAmbient();
+            StopSFXLoop();
+        };
         _musicSource1 = gameObject.AddComponent<AudioSource>();
         _sfxSourceLoop = gameObject.AddComponent<AudioSource>();
         _sfxSource = gameObject.AddComponent<AudioSource>();

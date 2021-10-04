@@ -35,6 +35,7 @@ public class Breaking : MonoBehaviour
 
     public void FixBreaking(TweenCallback callback)
     {
+        _fixingProgressBar.fillAmount = 0;
         Vector3 screenPos = _camera.WorldToScreenPoint(Player.Instance.transform.position + Vector3.up * 1.5f);
         _progressBarBorder.transform.position = screenPos;
         _fixingProgressBar.transform.position = screenPos;
