@@ -19,6 +19,8 @@ public class Reactor : MonoBehaviour
     private float _delta = 10;
     private float _temperatureReactor = 750;
     private float _powerReactor = 12000;
+    private float _powerReactorKoeff = 120;
+
 
     private bool _isTimerStart = false;
 
@@ -74,6 +76,15 @@ public class Reactor : MonoBehaviour
                 _powerReactorUI.color = Color.white;
         }
     }
+    public float PowerReactorKoef
+    {
+        get => _powerReactorKoeff;
+        set
+        {
+            _powerReactorKoeff = value;
+        }
+    }
+
 
     private void Awake()
     {
@@ -95,8 +106,9 @@ public class Reactor : MonoBehaviour
             if (_absorption.value > 80 || _absorption.value < 20)
                 offset /= 5;
             _absorption.DOValue(Mathf.Abs(_absorption.value + offset), 0.2f);
+
             TemperatureReactor = TemperatureReactor + (_absorption.value * 15 - _temperatureReactor) / 2;
-            PowerReactor = PowerReactor + (_absorption.value * 120 - _powerReactor) / 2;
+            PowerReactor = PowerReactor + (_absorption.value * _powerReactorKoeff - _powerReactor) / 2;
 
 
             yield return new WaitForSeconds(1f);
