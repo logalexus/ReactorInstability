@@ -7,9 +7,7 @@ public class TextSpawnForFinal : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _dialogueText;
     [SerializeField] private string[] _sentences;
-
-    private float _distance = 280f;
-    private float _duration = 1f;
+    
 
     private int _index;
     private float _dialogueSpeed = 0.05f;
@@ -19,14 +17,7 @@ public class TextSpawnForFinal : MonoBehaviour
     {
         NextSentence();
     }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            NextSentence();
-        }
-    }
+    
 
     void NextSentence()
     {

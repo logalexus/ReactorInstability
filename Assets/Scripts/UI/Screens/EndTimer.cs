@@ -31,12 +31,12 @@ public class EndTimer : IteractPanel
     {
         StopAllCoroutines();
         _timer = 10;
-        _timerUI.text = $"{_timer}";
         _isCall = false;
         tw.Rewind();
         _endTimerTransition.CloseAnim().OnComplete(() =>
         {
             base.Close();
+            _timerUI.text = $"{_timer}";
         });
     }
 

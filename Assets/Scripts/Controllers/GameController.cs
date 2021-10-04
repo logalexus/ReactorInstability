@@ -10,8 +10,7 @@ public class GameController : MonoBehaviour
 
     public event UnityAction GameOver;
     public event UnityAction StartGame;
-
-    private AudioController _audioController;
+    
     
     private void Awake()
     {
@@ -19,15 +18,9 @@ public class GameController : MonoBehaviour
             Instance = this;
         else if (Instance == this)
             Destroy(gameObject);
-        //DontDestroyOnLoad(gameObject);
-
-        Application.targetFrameRate = 70;
+        
     }
-
-    private void Start()
-    {
-        _audioController = AudioController.Instance;
-    }
+    
     
 
     public void OnGameOver()

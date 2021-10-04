@@ -17,6 +17,8 @@ public class TextSpawn : MonoBehaviour
     private int _index;
     private float _dialogueSpeed = 0.05f;
     private bool _isTyping = false;
+    private bool _isIteractable = true;
+
 
     private void Start()
     {
@@ -30,7 +32,7 @@ public class TextSpawn : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && _isIteractable)
         {
             NextSentence();
         }
@@ -66,7 +68,14 @@ public class TextSpawn : MonoBehaviour
 
     void Close()
     {
-        transform.DOMove(new Vector3(transform.position.x, transform.position.y - _distance), _duration);
-        GameController.Instance.OnStartGame();
+        if (_isIteractable)
+        {
+            _isIteractable = false;
+            GameController.Instance.OnStartGame();
+            transform.DOMove(new Vector3(transform.position.x, transform.position.y - _distance), _duration).OnComplete(() =>
+            {
+                gameObject.SetActive(false);
+            });
+        }
     }
 }
