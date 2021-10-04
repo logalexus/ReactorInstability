@@ -43,7 +43,7 @@ public class Reactor : MonoBehaviour
             _temperatureReactor = value;
             _temperatureReactorUI.text = $"{(int)value}K";
 
-            if (value > 1200 || value < 200)
+            if (value > 1200 || (PowerReactor < 1000 && value < 200) || (PowerReactor < 1000 && value > 1200) || PowerReactor < 1000 || value < 200)
             {
                 _temperatureReactorUI.color = Color.red;
                 if (!_isTimerStart)
@@ -68,12 +68,19 @@ public class Reactor : MonoBehaviour
         get => _powerReactor;
         set
         {
+
             _powerReactor = value;
             _powerReactorUI.text = $"{(int)value}\nMwt";
             if (value < 1000)
+            {
                 _powerReactorUI.color = Color.red;
+                
+            }
             else
+            {
                 _powerReactorUI.color = Color.white;
+                
+            }
         }
     }
     public float PowerReactorKoef

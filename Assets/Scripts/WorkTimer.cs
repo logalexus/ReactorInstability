@@ -31,7 +31,7 @@ public class WorkTimer : MonoBehaviour
                 StopAllCoroutines();
             }
             _timer++;
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(60);
 
         }
     }

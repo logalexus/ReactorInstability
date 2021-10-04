@@ -2,6 +2,7 @@
 using System.Collections;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.UI;
 
 public class EndTimer : IteractPanel
 {
@@ -10,10 +11,11 @@ public class EndTimer : IteractPanel
     [SerializeField] private Explosion _explosion;
     [SerializeField] private SpriteRenderer _alert;
     [SerializeField] private FinalScreenNonPower _finalScreenNonPower;
+    [SerializeField] private Slider _slider;
+
 
 
     private int _timer = 10;
-    private Sequence s;
     private Tween tw;
 
     private bool _isCall = false;
@@ -57,6 +59,7 @@ public class EndTimer : IteractPanel
             }
             else if (_timer == 0)
             {
+                _slider.interactable = false;
                 if (Reactor.Instance.TemperatureReactor > 1200)
                     _explosion.StartAnim();
                 else if (Reactor.Instance.PowerReactor < 1000)
