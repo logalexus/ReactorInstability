@@ -57,7 +57,7 @@ public class Reactor : MonoBehaviour
                     _endTimer.Close();
                     _isTimerStart = false;
                 }
-                _temperatureReactorUI.color = Color.black;
+                _temperatureReactorUI.color = Color.white;
             }
         }
     }
@@ -71,7 +71,7 @@ public class Reactor : MonoBehaviour
             if (value < 1000)
                 _powerReactorUI.color = Color.red;
             else
-                _powerReactorUI.color = Color.black;
+                _powerReactorUI.color = Color.white;
         }
     }
 
@@ -82,17 +82,19 @@ public class Reactor : MonoBehaviour
 
     void Start()
     {
-        GameController.Instance.StartDialog += () => StopAllCoroutines();
-        GameController.Instance.EndDialog += () => StartCoroutine(UpdateReactor());
-       // StartCoroutine(UpdateReactor());
+        GameController.Instance.GameOver += () => StopAllCoroutines();
+        GameController.Instance.StartGame += () => StartCoroutine(UpdateReactor());
     }
    
     IEnumerator UpdateReactor()
     {
         while (true)
         {
-            _absorption.DOValue(Mathf.Abs(_absorption.value + Random.Range(-_delta, _delta)), 0.2f);
+            float offset = Random.Range(-_delta, _delta);
 
+            if (_absorption.value > 80 || _absorption.value < 20)
+                offset /= 5;
+            _absorption.DOValue(Mathf.Abs(_absorption.value + offset), 0.2f);
             TemperatureReactor = TemperatureReactor + (_absorption.value * 15 - _temperatureReactor) / 2;
             PowerReactor = PowerReactor + (_absorption.value * 120 - _powerReactor) / 2;
 

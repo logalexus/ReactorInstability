@@ -6,14 +6,16 @@ using UnityEngine;
 public class Sounds : ScriptableObject
 {
     [SerializeField] private AudioClip _mainTheme;
+    [SerializeField] private AudioClip _ambientFactory;
+    [SerializeField] private AudioClip _warnignSignal;
+    [SerializeField] private AudioClip _explosion;
     [SerializeField] private AudioClip _click;
-    [SerializeField] private AudioClip _engine;
-    [SerializeField] private AudioClip _coin;
-    [SerializeField] private AudioClip _collision;
-    
+
+
     public AudioClip MainTheme => _mainTheme;
+    public AudioClip AmbientFactory => _ambientFactory;
+    public AudioClip WarnignSignal => _warnignSignal;
+    public AudioClip Explosion => _explosion;
     public AudioClip Click => _click;
-    public AudioClip Engine => _engine;
-    public AudioClip Coin => _coin;
-    public AudioClip Collision => _collision;
+
 }

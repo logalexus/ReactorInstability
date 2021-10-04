@@ -25,7 +25,7 @@ public class TextSpawn : MonoBehaviour
             Close();
         });
         NextSentence();
-        GameController.Instance.OnStartDialog();
+        GameController.Instance.OnStartGame();
         transform.DOMove(new Vector3(transform.position.x, transform.position.y + _distance), _duration);
     }
 
@@ -68,6 +68,6 @@ public class TextSpawn : MonoBehaviour
     void Close()
     {
         transform.DOMove(new Vector3(transform.position.x, transform.position.y - _distance), _duration);
-        GameController.Instance.OnEndDialog();
+        GameController.Instance.OnStartGame();
     }
 }

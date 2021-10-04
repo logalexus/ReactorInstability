@@ -29,6 +29,7 @@ public class EndTimer : IteractPanel
         _timer = 10;
         _timerUI.text = $"{_timer}";
         _isCall = false;
+        s.Kill();
         _endTimerTransition.CloseAnim().OnComplete(() =>
         {
             base.Close();
@@ -47,13 +48,15 @@ public class EndTimer : IteractPanel
                 if (_timer < _alertTime && !_isCall)
                 {
                     s = DOTween.Sequence();
-                    s.Append(_alert.DOFade(1, _alertDirection)).Append(_alert.DOFade(0, _alertDirection)).SetLoops(-1, LoopType.Yoyo);
+                    s.Append(_alert.DOFade(1, _alertDirection))
+                        .Append(_alert.DOFade(0, _alertDirection)).SetLoops(-1, LoopType.Yoyo);
                     _isCall = true;
                 }
             }
             else if (_timer == 0)
             {
                 _explosion.StartAnim();
+                GameController.Instance.OnGameOver();
                 break;
             }
         }

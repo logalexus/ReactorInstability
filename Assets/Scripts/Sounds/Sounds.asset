@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e536a2b0f0b05847bab5c7ae718eb39, type: 3}
   m_Name: Sounds
   m_EditorClassIdentifier: 
-  _mainTheme: {fileID: 8300000, guid: 148a4179e3347154ea3d61cda50a004d, type: 3}
-  _click: {fileID: 8300000, guid: 6e8772b49f34d402a90016ed445d8a2f, type: 3}
-  _engine: {fileID: 8300000, guid: bb683044c23cd50438d45fe475089c84, type: 3}
-  _coin: {fileID: 8300000, guid: faf94ef569e6166499c2bfc0103c18a4, type: 3}
-  _collision: {fileID: 8300000, guid: bd342762e886d41439fce9bf1cdeebe9, type: 3}
+  _mainTheme: {fileID: 8300000, guid: 4ecb4677b54b6be4fb19dbe6d7ce320a, type: 3}
+  _ambientFactory: {fileID: 8300000, guid: e301c4667f93cfb4388973a7a3f7d3e4, type: 3}
+  _warnignSignal: {fileID: 8300000, guid: 83eb24889b6a9154eb39c600d890a84e, type: 3}
+  _explosion: {fileID: 8300000, guid: f8187dfe3c7dacd44878e3c3574a3963, type: 3}
+  _click: {fileID: 8300000, guid: 1aff7f27f4ac865438f7f0ef7c1cad3a, type: 3}

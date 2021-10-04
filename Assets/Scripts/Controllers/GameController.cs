@@ -9,9 +9,7 @@ public class GameController : MonoBehaviour
     public static GameController Instance;
 
     public event UnityAction GameOver;
-    public event UnityAction GameStart;
-    public event UnityAction StartDialog;
-    public event UnityAction EndDialog;
+    public event UnityAction StartGame;
 
     private AudioController _audioController;
     
@@ -30,27 +28,16 @@ public class GameController : MonoBehaviour
     {
         _audioController = AudioController.Instance;
     }
+    
 
-    private void OnGameEnd()
+    public void OnGameOver()
     {
         GameOver?.Invoke();
-        _audioController.PlayMusic(_audioController.Sounds.MainTheme);
     }
 
-    public void OnGameStart()
+    public void OnStartGame()
     {
-        GameStart?.Invoke();
-        _audioController.StopMusic();
-
+        StartGame?.Invoke();
     }
-
-    public void OnStartDialog()
-    {
-        StartDialog?.Invoke();
-    }
-
-    public void OnEndDialog()
-    {
-        EndDialog?.Invoke();
-    }
+    
 }

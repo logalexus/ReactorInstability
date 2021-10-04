@@ -18,6 +18,10 @@ public class Explosion : MonoBehaviour
         Bloom bloom = _postProcessVolume.profile.GetSetting<Bloom>();
         var floatParameter = new FloatParameter();
         floatParameter.value = 0f;
+        AudioController.Instance.PlaySFX(AudioController.Instance.Sounds.Explosion);
+        AudioController.Instance.StopMusic();
+        AudioController.Instance.StopAmbient();
+        AudioController.Instance.StopSFXLoop();
         DOTween.To(() => floatParameter.value, x => floatParameter.value = x, 100f, 2)
             .OnUpdate(() => bloom.intensity.Override(floatParameter));
         _finalScreen.Open(gameObject);
