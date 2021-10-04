@@ -8,11 +8,10 @@ public class EndTimer : IteractPanel
     [SerializeField] private EndTimerTransition _endTimerTransition;
     [SerializeField] private TextMeshProUGUI _timerUI;
     [SerializeField] private Explosion _explosion;
-
+    [SerializeField] private SpriteRenderer _alert;
 
     private int _timer = 10;
     
-
     public override void Open(GameObject caller)
     {
         base.Open(caller);
@@ -38,7 +37,11 @@ public class EndTimer : IteractPanel
             yield return new WaitForSeconds(1f);
             _timerUI.text = $"{_timer}";
             if (_timer > 0)
+            {
                 _timer--;
+                if (_timer < 5)
+                    _alert.DOFade(1, 3f);
+            }
             else if (_timer == 0)
             {
                 _explosion.StartAnim();
