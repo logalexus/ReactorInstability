@@ -9,7 +9,7 @@ using DG.Tweening;
 public class Explosion : MonoBehaviour
 {
     [SerializeField] private PostProcessVolume _postProcessVolume;
-    [SerializeField] private FinalScreen _finalScreen;
+    [SerializeField] private FinalScreenExposion _finalScreen;
 
 
 

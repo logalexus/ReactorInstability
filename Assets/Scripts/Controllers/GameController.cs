@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
             Instance = this;
         else if (Instance == this)
             Destroy(gameObject);
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         Application.targetFrameRate = 70;
     }
