@@ -24,7 +24,7 @@ public class TextSpawn : MonoBehaviour
         {
             Close();
         });
-
+        NextSentence();
         GameController.Instance.OnStartDialog();
         transform.DOMove(new Vector3(transform.position.x, transform.position.y + _distance), _duration);
     }
