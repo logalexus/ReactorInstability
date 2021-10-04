@@ -26,6 +26,8 @@ public class Breaking : MonoBehaviour
             _warningSignSeq.Join(_warningSign.transform.DOScale(new Vector2(transform.localScale.x + _scaleDelta, transform.localScale.y + _scaleDelta), 0.4f)).SetLoops(-1, LoopType.Yoyo);
             _isCall = true;
             Reactor.Instance.Delta += 10;
+            AudioController.Instance.PlaySFXLoop(AudioController.Instance.Sounds.WarnignSignal);
+
         }
     }
 
@@ -53,6 +55,5 @@ public class Breaking : MonoBehaviour
         callbackAfterFix = null;
         _isCall = false;
         Reactor.Instance.Delta -= 10;
-
     }
 }

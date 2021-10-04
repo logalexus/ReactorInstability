@@ -16,6 +16,7 @@ public class Iteracter : MonoBehaviour
     {
         if (isIteractable && Input.GetKeyDown(KeyCode.E))
         {
+            AudioController.Instance.PlaySFX(AudioController.Instance.Sounds.Click);
             enabled = false;
             panelOpener.Open();
             Player.Instance.GetComponent<PlayerMove>().StopMove();

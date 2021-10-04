@@ -10,7 +10,7 @@ public class UIButton : Button
     {
         if (IsActive() && IsInteractable())
         {
-            AudioController.Instance.PlaySFX(AudioController.Instance.Sounds.Click);
+            //AudioController.Instance.PlaySFX(AudioController.Instance.Sounds.Click);
         }
         base.OnPointerDown(eventData);
     }

@@ -9,23 +9,29 @@ public class PlayerMove : MonoBehaviour
     private float _verticalInput;
     private float _horizontalInput;
     private float _speed = 5f;
+    private bool _isMove = false;
+
     private Animator _animator;
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
+        GameController.Instance.StartGame += () => _isMove = true;
     }
 
     private void Update()
     {
         _verticalInput = Input.GetAxis("Vertical") * _speed;
-        _horizontalInput = Input.GetAxis("Horizontal") * _speed;  
+        _horizontalInput = Input.GetAxis("Horizontal") * _speed;
     }
 
     private void FixedUpdate()
     {
-        _player.velocity = new Vector2(_horizontalInput, _player.velocity.y);
-        _player.velocity = new Vector2(_player.velocity.x, _verticalInput);
+        if (_isMove)
+        {
+            _player.velocity = new Vector2(_horizontalInput, _player.velocity.y);
+            _player.velocity = new Vector2(_player.velocity.x, _verticalInput);
+        }
         PlayAnimation();
     }
 

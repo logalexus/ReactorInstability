@@ -45,6 +45,7 @@ public class EndTimer : IteractPanel
             else if (_timer == 0)
             {
                 _explosion.StartAnim();
+                GameController.Instance.OnGameOver();
                 break;
             }
         }

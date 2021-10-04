@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BreakingCaller : MonoBehaviour
@@ -8,7 +9,14 @@ public class BreakingCaller : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(BreakingCalls());
+        GameController.Instance.GameOver += () => StopAllCoroutines();
+        GameController.Instance.StartGame += () => StartCoroutine(BreakingCalls());
+    }
+
+    private void Update()
+    {
+        if (_breakings.All(x => x.IsCall == false))
+            AudioController.Instance.StopSFXLoop();
     }
 
     IEnumerator BreakingCalls()
