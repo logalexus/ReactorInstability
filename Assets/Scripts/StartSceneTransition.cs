@@ -7,9 +7,14 @@ using UnityEngine.UI;
 public class StartSceneTransition : MonoBehaviour
 {
     [SerializeField] private Image _sprite;
+<<<<<<< HEAD
+=======
+    [SerializeField] private IteractPanel _startPanel;
+>>>>>>> remotes/origin/master
 
     void Start()
     {
+        _startPanel.Open(gameObject);
         _sprite.DOFade(0, 1);
     }
     
